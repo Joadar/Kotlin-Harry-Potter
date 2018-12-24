@@ -1,5 +1,6 @@
 package io.smallant.wizard.characters
 
+import io.smallant.wizard.Wand
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -11,6 +12,8 @@ open class Wizard(val firstname: String, var lastname: String, var sexe: Sexe) {
 
     var power: Double = 1.0
     var life: Double = 100.0
+
+    var wand: Wand? = null
 
     var dateOfBirth: String = ""
         set(value) {

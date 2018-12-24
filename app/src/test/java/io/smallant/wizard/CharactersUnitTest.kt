@@ -1,6 +1,9 @@
 package io.smallant.wizard
 
-import io.smallant.wizard.characters.*
+import io.smallant.wizard.characters.Professor
+import io.smallant.wizard.characters.Sexe
+import io.smallant.wizard.characters.Student
+import io.smallant.wizard.characters.Wizard
 import io.smallant.wizard.houses.*
 import io.smallant.wizard.school.Course
 import io.smallant.wizard.school.SortingHat
@@ -91,5 +94,14 @@ class CharactersUnitTest {
         assertEquals(1, slytherinStudents?.size)
         assertEquals(0, ravenclawStudents?.size ?: 0)
         assertEquals(0, hufflepuffStudents?.size ?: 0)
+    }
+
+    @Test
+    fun `is wand choosing wizard correct`() {
+        assertEquals(null, harryPotter.wand)
+        Wand.chooseWizard(harryPotter)
+        assertEquals(Wand.Wood.HOLLY, harryPotter.wand?.wood)
+        assertEquals(Wand.Core.PHOENIX_FEATHER, harryPotter.wand?.core)
+        assertEquals(11.0, harryPotter.wand?.length)
     }
 }
