@@ -103,5 +103,10 @@ class CharactersUnitTest {
         assertEquals(Wand.Wood.HOLLY, harryPotter.wand?.wood)
         assertEquals(Wand.Core.PHOENIX_FEATHER, harryPotter.wand?.core)
         assertEquals(11.0, harryPotter.wand?.length)
+
+        assertEquals(null, hermioneGranger.wand)
+        val hermioneWand = Wand(Wand.Wood.VINE, Wand.Core.DRAGON_HEARTSTRING, 13.4)
+        hermioneWand.chooseWizard(hermioneGranger)
+        assertEquals(hermioneWand, hermioneGranger.wand)
     }
 }

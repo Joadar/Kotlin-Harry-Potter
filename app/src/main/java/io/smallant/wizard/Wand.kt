@@ -20,6 +20,10 @@ class Wand(val wood: Wood, val core: Core, val length: Double) {
         JACKALOPE_ANTLER, BASILIK_HORN
     }
 
+    fun chooseWizard(wizard: Wizard) {
+        wizard.wand = this
+    }
+
     companion object {
 
         private val listOfWands: ArrayList<Wand> = arrayListOf()

@@ -20,4 +20,12 @@ class WandsUnitTest {
         val nbWands = Wand.Wood.values().size * Wand.Core.values().size
         assertEquals(688, nbWands)
     }
+
+    @Test
+    fun `is wand correct`() {
+        val wand = Wand(Wand.Wood.DOGWOOD, Wand.Core.ROUGAROU_HAIR, 20.0)
+        assertEquals(Wand.Wood.DOGWOOD, wand.wood)
+        assertEquals(Wand.Core.ROUGAROU_HAIR, wand.core)
+        assertEquals(20.0, wand.length, 0.001)
+    }
 }
