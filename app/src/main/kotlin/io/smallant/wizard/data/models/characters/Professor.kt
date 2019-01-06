@@ -1,7 +1,7 @@
-package io.smallant.wizard.characters
+package io.smallant.wizard.data.models.characters
 
-import io.smallant.wizard.houses.HowgwartHouse
-import io.smallant.wizard.school.Course
+import io.smallant.wizard.data.models.houses.HowgwartHouse
+import io.smallant.wizard.data.models.school.Course
 
 class Professor(firstname: String, lastname: String, sexe: Sexe, val house: HowgwartHouse, val course: Course) :
     Wizard(firstname, lastname, sexe) {

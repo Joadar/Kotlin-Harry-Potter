@@ -1,6 +1,6 @@
-package io.smallant.wizard.characters
+package io.smallant.wizard.data.models.characters
 
-import io.smallant.wizard.Wand
+import io.smallant.wizard.data.models.Wand
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit

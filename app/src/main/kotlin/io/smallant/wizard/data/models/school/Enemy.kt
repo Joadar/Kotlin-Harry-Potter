@@ -1,6 +1,7 @@
-package io.smallant.wizard.school
+package io.smallant.wizard.data.models.school
 
 import io.smallant.wizard.houses.*
+import io.smallant.wizard.data.models.houses.*
 
 
 object Enemy {

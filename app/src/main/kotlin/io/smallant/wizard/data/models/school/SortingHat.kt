@@ -1,7 +1,7 @@
-package io.smallant.wizard.school
+package io.smallant.wizard.data.models.school
 
-import io.smallant.wizard.characters.Student
-import io.smallant.wizard.houses.HowgwartHouse
+import io.smallant.wizard.data.models.characters.Student
+import io.smallant.wizard.data.models.houses.HowgwartHouse
 
 object SortingHat {
     fun sort(student: Student, defaultHouse: HowgwartHouse? = null) {

@@ -1,12 +1,12 @@
-package io.smallant.wizard
+package io.smallant.wizard.data.models
 
-import io.smallant.wizard.characters.Professor
-import io.smallant.wizard.characters.Sexe
-import io.smallant.wizard.characters.Student
-import io.smallant.wizard.characters.Wizard
-import io.smallant.wizard.houses.*
-import io.smallant.wizard.school.Course
-import io.smallant.wizard.school.SortingHat
+import io.smallant.wizard.data.models.characters.Professor
+import io.smallant.wizard.data.models.characters.Sexe
+import io.smallant.wizard.data.models.characters.Student
+import io.smallant.wizard.data.models.characters.Wizard
+import io.smallant.wizard.data.models.houses.*
+import io.smallant.wizard.data.models.school.Course
+import io.smallant.wizard.data.models.school.SortingHat
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -16,14 +16,28 @@ class CharactersUnitTest {
 
     private val potionCourse = Course("Potion")
 
-    private val harryPotter = Student("Harry", "Potter", Sexe.MALE)
-    private val hermioneGranger = Student("Hermione", "Granger", Sexe.FEMALE)
-    private val ronWeasley = Student("Ron", "Weasley", Sexe.MALE)
-    private val dracoMalfoy = Student("Draco", "Malfoy", Sexe.MALE)
+    private val harryPotter =
+        Student("Harry", "Potter", Sexe.MALE)
+    private val hermioneGranger = Student(
+        "Hermione",
+        "Granger",
+        Sexe.FEMALE
+    )
+    private val ronWeasley =
+        Student("Ron", "Weasley", Sexe.MALE)
+    private val dracoMalfoy =
+        Student("Draco", "Malfoy", Sexe.MALE)
 
-    private val severusSnape = Professor("Severus", "Snape", Sexe.MALE, Slytherin(), potionCourse)
+    private val severusSnape = Professor(
+        "Severus",
+        "Snape",
+        Sexe.MALE,
+        Slytherin(),
+        potionCourse
+    )
 
-    private val randomWizard = Wizard("Jeanne", "Doe", Sexe.FEMALE)
+    private val randomWizard =
+        Wizard("Jeanne", "Doe", Sexe.FEMALE)
 
     private val gryffindor: Gryffindor = Gryffindor()
     private val ravenclaw: Ravenclaw = Ravenclaw()
@@ -105,7 +119,11 @@ class CharactersUnitTest {
         assertEquals(11.0, harryPotter.wand?.length)
 
         assertEquals(null, hermioneGranger.wand)
-        val hermioneWand = Wand(Wand.Wood.VINE, Wand.Core.DRAGON_HEARTSTRING, 13.4)
+        val hermioneWand = Wand(
+            Wand.Wood.VINE,
+            Wand.Core.DRAGON_HEARTSTRING,
+            13.4
+        )
         hermioneWand.chooseWizard(hermioneGranger)
         assertEquals(hermioneWand, hermioneGranger.wand)
     }

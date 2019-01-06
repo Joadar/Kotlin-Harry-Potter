@@ -1,6 +1,6 @@
-package io.smallant.wizard
+package io.smallant.wizard.data.models
 
-import io.smallant.wizard.characters.Wizard
+import io.smallant.wizard.data.models.characters.Wizard
 import java.math.RoundingMode
 import kotlin.random.Random
 
@@ -51,7 +51,11 @@ class Wand(val wood: Wood, val core: Core, val length: Double) {
 
         fun chooseWizard(wizard: Wizard) {
             if (wizard.fullname == "Harry Potter")
-                wizard.wand = Wand(Wood.HOLLY, Core.PHOENIX_FEATHER, 11.0)
+                wizard.wand = Wand(
+                    Wood.HOLLY,
+                    Core.PHOENIX_FEATHER,
+                    11.0
+                )
             else
                 wizard.wand = listOfWands.random()
         }

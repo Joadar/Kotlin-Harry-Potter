@@ -1,8 +1,8 @@
-package io.smallant.wizard
+package io.smallant.wizard.data.models
 
-import io.smallant.wizard.houses.Gryffindor
-import io.smallant.wizard.houses.House
-import io.smallant.wizard.school.Enemy
+import io.smallant.wizard.data.models.houses.Gryffindor
+import io.smallant.wizard.data.models.houses.House
+import io.smallant.wizard.data.models.school.Enemy
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
