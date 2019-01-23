@@ -1,5 +1,6 @@
 package io.smallant.wizard.data.sources
 
+import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.smallant.wizard.data.models.characters.Sexe
@@ -12,13 +13,13 @@ import org.junit.Test
 
 class SourcesUnitTest {
 
-    private lateinit var repository: WizardRepository
-    private lateinit var remoteDataSource: RemoteDataSource
+    private val wizardService: WizardService = mockk()
+    private val remoteDataSource: RemoteDataSource = RemoteDataSource(wizardService)
+    private val repository: WizardRepository = WizardRepository(remoteDataSource)
 
     @Before
-    fun setUp() {
-        remoteDataSource = RemoteDataSource(mockk<WizardService>())
-        repository = WizardRepository(remoteDataSource)
+    fun init() {
+        clearMocks(wizardService)
     }
 
     @Test

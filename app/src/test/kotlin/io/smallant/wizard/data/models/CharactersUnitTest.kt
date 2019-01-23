@@ -9,45 +9,29 @@ import io.smallant.wizard.data.models.school.Course
 import io.smallant.wizard.data.models.school.SortingHat
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Before
 import org.junit.Test
 
 class CharactersUnitTest {
 
     private val potionCourse = Course("Potion")
 
-    private val harryPotter =
-        Student("Harry", "Potter", Sexe.MALE)
-    private val hermioneGranger = Student(
-        "Hermione",
-        "Granger",
-        Sexe.FEMALE
-    )
-    private val ronWeasley =
-        Student("Ron", "Weasley", Sexe.MALE)
-    private val dracoMalfoy =
-        Student("Draco", "Malfoy", Sexe.MALE)
+    private val harryPotter = Student("Harry", "Potter", Sexe.MALE)
+    private val hermioneGranger = Student("Hermione", "Granger", Sexe.FEMALE)
+    private val ronWeasley = Student("Ron", "Weasley", Sexe.MALE)
+    private val dracoMalfoy = Student("Draco", "Malfoy", Sexe.MALE)
 
-    private val severusSnape = Professor(
-        "Severus",
-        "Snape",
-        Sexe.MALE,
-        Slytherin(),
-        potionCourse
-    )
+    private val severusSnape = Professor("Severus", "Snape", Sexe.MALE, Slytherin(), potionCourse)
 
-    private val randomWizard =
-        Wizard("Jeanne", "Doe", Sexe.FEMALE)
+    private val randomWizard = Wizard("Jeanne", "Doe", Sexe.FEMALE)
 
     private val gryffindor: Gryffindor = Gryffindor()
     private val ravenclaw: Ravenclaw = Ravenclaw()
     private val hufflepuff: Hufflepuff = Hufflepuff()
     private val slytherin: Slytherin = Slytherin()
 
-    private lateinit var listOfWizards: List<Wizard>
+    private val listOfWizards: List<Wizard>
 
-    @Before
-    fun setUp() {
+    init {
         SortingHat.sort(harryPotter, gryffindor)
         SortingHat.sort(hermioneGranger, gryffindor)
         SortingHat.sort(ronWeasley, gryffindor)
