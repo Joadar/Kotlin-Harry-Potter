@@ -5,6 +5,8 @@ import org.junit.Test
 
 class WandsUnitTest {
 
+    private val wand = Wand(Wand.Wood.DOGWOOD, Wand.Core.ROUGAROU_HAIR, 20.0)
+
     @Test
     fun `is number of wand's wood correct`() {
         assertEquals(43, Wand.Wood.values().size)
@@ -23,9 +25,10 @@ class WandsUnitTest {
 
     @Test
     fun `is wand correct`() {
-        val wand = Wand(Wand.Wood.DOGWOOD, Wand.Core.ROUGAROU_HAIR, 20.0)
-        assertEquals(Wand.Wood.DOGWOOD, wand.wood)
-        assertEquals(Wand.Core.ROUGAROU_HAIR, wand.core)
-        assertEquals(20.0, wand.length, 0.001)
+        with(wand) {
+            assertEquals(Wand.Wood.DOGWOOD, wood)
+            assertEquals(Wand.Core.ROUGAROU_HAIR, core)
+            assertEquals(20.0, length, 0.001)
+        }
     }
 }
