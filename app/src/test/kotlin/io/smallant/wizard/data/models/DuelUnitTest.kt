@@ -9,6 +9,7 @@ import io.smallant.wizard.data.models.spells.CounterSpell
 import io.smallant.wizard.data.models.spells.JinxSpell
 import io.smallant.wizard.data.models.spells.Spell
 import io.smallant.wizard.extensions.spell
+import io.smallant.wizard.other.RolePlay
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -34,10 +35,14 @@ class DuelUnitTest {
 
     @Test
     fun `is Harry Potter fighting back`() {
-        severusSnape.spell(harryPotter, sectumsempraSpell)
-            .also {
-                harryPotter.spell(severusSnape, sectumsempraSpell)
-            }
+        RolePlay.onDuel {
+            println("The duel is just beginning")
+            severusSnape.spell(harryPotter, sectumsempraSpell)
+                .also {
+                    harryPotter.spell(severusSnape, sectumsempraSpell)
+                }
+            println("The duel is just ending")
+        }
         assertEquals(36.0, harryPotter.life, 0.001)
         assertEquals(56.0, severusSnape.life, 0.001)
     }
