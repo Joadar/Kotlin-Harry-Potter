@@ -24,6 +24,14 @@ class CharactersUnitTest {
 
     private val randomWizard = Wizard("Jeanne", "Doe", Sexe.FEMALE)
 
+    private val albusDumbledore = Professor("Albus", "Dumbledore", Sexe.MALE, Gryffindor(), Course("")).apply {
+        changePosition(Professor.Position.HEADMASTER)
+    }
+
+    private val hagrid: Wizard = Wizard("Rebeus", "Hagrid", Sexe.MALE).apply {
+        power = 5.0
+    }
+
     private val gryffindor: Gryffindor = Gryffindor()
     private val ravenclaw: Ravenclaw = Ravenclaw()
     private val hufflepuff: Hufflepuff = Hufflepuff()
@@ -110,5 +118,15 @@ class CharactersUnitTest {
         )
         hermioneWand.chooseWizard(hermioneGranger)
         assertEquals(hermioneWand, hermioneGranger.wand)
+    }
+
+    @Test
+    fun `is Albus Dumbledore headmaster`() {
+        assertEquals(Professor.Position.HEADMASTER.toString().toLowerCase().capitalize(), albusDumbledore.position)
+    }
+
+    @Test
+    fun `is Hagrid strong`() {
+        assertEquals(5.0, hagrid.power, 0.001)
     }
 }
