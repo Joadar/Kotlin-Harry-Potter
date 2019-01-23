@@ -22,31 +22,23 @@ sealed class HowgwartHouse(private val house: House, val founder: Wizard) {
         )
     }
 }
-class Gryffindor : HowgwartHouse(
-    House.GRYFFINDOR,
-    Wizard("Godric", "Gryffindor", Sexe.MALE)
-) {
+
+class Gryffindor : HowgwartHouse(House.GRYFFINDOR, Wizard("Godric", "Gryffindor", Sexe.MALE)) {
     override val commonRoom: String = "Gryffindor Tower"
     override val animal: String = "Lion"
 }
-class Hufflepuff : HowgwartHouse(
-    House.HUFFLEPUFF,
-    Wizard("Helga", "Hufflepuff", Sexe.FEMALE)
-) {
+
+class Hufflepuff : HowgwartHouse(House.HUFFLEPUFF, Wizard("Helga", "Hufflepuff", Sexe.FEMALE)) {
     override val commonRoom: String = "Hufflepuff Basement"
     override val animal: String = "Badger"
 }
-class Ravenclaw : HowgwartHouse(
-    House.RAVENCLAW,
-    Wizard("Rowena", "Ravenclaw", Sexe.FEMALE)
-) {
+
+class Ravenclaw : HowgwartHouse(House.RAVENCLAW, Wizard("Rowena", "Ravenclaw", Sexe.FEMALE)) {
     override val commonRoom: String = "Ravenclaw Tower"
     override val animal: String = "Eagle"
 }
-class Slytherin : HowgwartHouse(
-    House.SLYTHERIN,
-    Wizard("Salazar", "Slytherin", Sexe.MALE)
-) {
+
+class Slytherin : HowgwartHouse(House.SLYTHERIN, Wizard("Salazar", "Slytherin", Sexe.MALE)) {
     override val commonRoom: String = "Slytherin Dungeon"
     override val animal: String = "Snake"
 }

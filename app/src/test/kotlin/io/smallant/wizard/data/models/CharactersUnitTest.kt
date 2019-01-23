@@ -20,17 +20,27 @@ class CharactersUnitTest {
     private val ronWeasley = Student("Ron", "Weasley", Sexe.MALE)
     private val dracoMalfoy = Student("Draco", "Malfoy", Sexe.MALE)
 
-    private val severusSnape = Professor("Severus", "Snape", Sexe.MALE, Slytherin(), potionCourse)
+    private val severusSnape: Professor = potionCourse.apply {
+        duration = 90
+    }.also {
+        println("The potion ${it.name} has a ${it.duration} minutes duration")
+    }.let { potionCourse ->
+        Professor("Severus", "Snape", Sexe.MALE, Slytherin(), potionCourse)
+    }.also {
+        println("${it.fullname} is a great professor")
+    }
 
     private val randomWizard = Wizard("Jeanne", "Doe", Sexe.FEMALE)
 
-    private val albusDumbledore = Professor("Albus", "Dumbledore", Sexe.MALE, Gryffindor(), Course("")).apply {
-        changePosition(Professor.Position.HEADMASTER)
-    }
+    private val albusDumbledore = Professor("Albus", "Dumbledore", Sexe.MALE, Gryffindor(), Course(""))
+        .apply {
+            changePosition(Professor.Position.HEADMASTER)
+        }
 
-    private val hagrid: Wizard = Wizard("Rebeus", "Hagrid", Sexe.MALE).apply {
-        power = 5.0
-    }
+    private val hagrid: Wizard = Wizard("Rebeus", "Hagrid", Sexe.MALE)
+        .apply {
+            power = 5.0
+        }
 
     private val gryffindor: Gryffindor = Gryffindor()
     private val ravenclaw: Ravenclaw = Ravenclaw()
@@ -89,6 +99,7 @@ class CharactersUnitTest {
 
     @Test
     fun `is number of students per house correct`() {
+        @Suppress("unchecked_cast")
         val students: List<Student> = listOfWizards.filter { it is Student } as List<Student>
         val houseStudents = students.groupBy { it.house }
         val gryffindorStudents = houseStudents[gryffindor]
@@ -111,11 +122,7 @@ class CharactersUnitTest {
         assertEquals(11.0, harryPotter.wand?.length)
 
         assertEquals(null, hermioneGranger.wand)
-        val hermioneWand = Wand(
-            Wand.Wood.VINE,
-            Wand.Core.DRAGON_HEARTSTRING,
-            13.4
-        )
+        val hermioneWand = Wand(Wand.Wood.VINE, Wand.Core.DRAGON_HEARTSTRING, 13.4)
         hermioneWand.chooseWizard(hermioneGranger)
         assertEquals(hermioneWand, hermioneGranger.wand)
     }
