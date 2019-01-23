@@ -14,8 +14,10 @@ import org.junit.Test
 class SourcesUnitTest {
 
     private val wizardService: WizardService = mockk()
-    private val remoteDataSource: RemoteDataSource = RemoteDataSource(wizardService)
-    private val repository: WizardRepository = WizardRepository(remoteDataSource)
+    private val repository: WizardRepository = run {
+        val remoteDataSource = RemoteDataSource(wizardService)
+        WizardRepository(remoteDataSource)
+    }
 
     @Before
     fun init() {
@@ -25,9 +27,10 @@ class SourcesUnitTest {
     @Test
     fun `fetch wizards should works`() {
         every { repository.fetchWizards() } returns listOf(Wizard("John", "Doe", Sexe.MALE))
-        val firstWizard = repository.fetchWizards()[0]
-        assertEquals("John", firstWizard.firstname)
-        assertEquals("Doe", firstWizard.lastname)
+        repository.fetchWizards()[0].let { firstWizard ->
+            assertEquals("John", firstWizard.firstname)
+            assertEquals("Doe", firstWizard.lastname)
+        }
     }
 
     @Test
