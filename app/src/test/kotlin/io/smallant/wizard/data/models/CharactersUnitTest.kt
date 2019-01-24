@@ -153,4 +153,12 @@ class CharactersUnitTest {
         // yeah, these are old students
         assertEquals(38, averageAge)
     }
+
+    @Test
+    fun `is potion course duration correct`() {
+        potionCourse.duration = 90
+        val (name, duration) = potionCourse
+        assertEquals("Potion", name)
+        assertEquals(90, duration)
+    }
 }
