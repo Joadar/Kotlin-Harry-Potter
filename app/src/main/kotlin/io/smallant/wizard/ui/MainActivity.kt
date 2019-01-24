@@ -25,15 +25,19 @@ class MainActivity : AppCompatActivity() {
 
         // TODO ViewModel
         var message: String
-        job = GlobalScope.launch {
+        job = GlobalScope.launch(Dispatchers.IO) {
             val result = wizardRepository.fetchWizards()
             message = when (result) {
                 is Result.Success -> "First wizard fullname = ${result.data[0].fullname}"
                 is Result.Error -> "Exception = ${result.exception.message}"
             }
             Log.d("MainActivityLog", message)
-            content.text = message
+
+            withContext(Dispatchers.Main) {
+                content.text = message
+            }
         }
+        content.text = "Loading..."
     }
 
     override fun onDestroy() {

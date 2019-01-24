@@ -26,6 +26,7 @@ class SourcesUnitTest {
 
     @Test
     fun `fetch wizards should works`() {
+        // TODO fix this test
         every { repository.fetchWizards() } returns listOf(Wizard("John", "Doe", Sexe.MALE))
         repository.fetchWizards()[0].let { firstWizard ->
             assertEquals("John", firstWizard.firstname)

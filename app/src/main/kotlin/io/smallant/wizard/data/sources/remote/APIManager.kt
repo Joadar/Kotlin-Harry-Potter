@@ -11,7 +11,8 @@ import java.util.concurrent.TimeUnit
 class APIManager {
 
     companion object {
-        private val ENDPOINT = "http://192.168.1.18:3000/"
+        // work with https://github.com/typicode/json-server
+        private const val ENDPOINT = "http://192.168.1.18:3000/"
     }
 
     private var privOkHttpClient: OkHttpClient? = null
