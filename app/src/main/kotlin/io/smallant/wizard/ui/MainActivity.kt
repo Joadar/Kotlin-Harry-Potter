@@ -1,24 +1,21 @@
 package io.smallant.wizard.ui
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import io.smallant.wizard.R
-import io.smallant.wizard.extensions.listenEvent
+import io.smallant.wizard.databinding.ActivityMainBinding
+import io.smallant.wizard.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProviders.of(this).get(MainViewModel::class.java)
-    }
+    override fun getLayoutId(): Int = R.layout.activity_main
+    override fun getViewModel(): MainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        viewModel.toastMessage.listenEvent(this) {
-            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        viewDataBinding?.apply {
+            viewModel = this@MainActivity.getViewModel()
+            setLifecycleOwner(this@MainActivity)
         }
     }
 }
