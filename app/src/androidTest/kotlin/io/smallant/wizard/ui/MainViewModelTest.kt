@@ -3,7 +3,6 @@ package io.smallant.wizard.ui
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.mockk
 import io.smallant.wizard.test.util.captureValues
-import io.smallant.wizard.test.util.captureValuesEvent
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
@@ -19,21 +18,11 @@ class MainViewModelTest {
     private var subject: MainViewModel = MainViewModel(mockk())
 
     @Test
-    fun whenMainViewModelStartLoadData_showLoading() {
+    fun whenSuccessfulLoadData_ShowAndHideSpinner() {
         runBlocking {
-            subject.content.captureValues {
+            subject.spinner.captureValues {
                 subject.fetchData()
-                assertSendsValues(0, "Loading...")
-            }
-        }
-    }
-
-    @Test
-    fun whenMainViewModelEndLoadData_showToast() {
-        runBlocking {
-            subject.toastMessage.captureValuesEvent {
-                subject.fetchData()
-                assertSendsValues(2_000, "Fetching wizards finished!")
+                assertSendsValues(2_000, true, false)
             }
         }
     }
