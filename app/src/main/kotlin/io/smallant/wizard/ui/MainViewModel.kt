@@ -12,11 +12,12 @@ import kotlinx.coroutines.*
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
 
-    private var job: Job? = null
+    private val viewModelJob: Job = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private val wizardRepository = WizardRepository(RemoteDataSource(APIManager().apiWizardService))
     private val _content: MutableLiveData<String> = MutableLiveData()
-    
+
     val content: LiveData<String>
         get() = _content
 
@@ -27,7 +28,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     private fun fetchData() {
         _content.value = "Loading..."
         var message: String
-        job = CoroutineScope(Dispatchers.Main).launch {
+        uiScope.launch {
             val result = withContext(Dispatchers.IO) {
                 wizardRepository.fetchWizards()
             }
@@ -43,6 +44,6 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     override fun onCleared() {
         super.onCleared()
-        job?.cancel()
+        viewModelJob.cancel()
     }
 }

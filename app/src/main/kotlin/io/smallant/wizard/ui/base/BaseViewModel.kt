@@ -16,4 +16,8 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     protected fun sendToast(message: String) {
         _toastMessage.value = Event(message)
     }
+
+    fun onToastShown() {
+        _toastMessage.value = null
+    }
 }

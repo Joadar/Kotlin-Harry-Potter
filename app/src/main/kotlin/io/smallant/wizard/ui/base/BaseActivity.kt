@@ -24,6 +24,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
         getViewModel().toastMessage.listenEvent(this) {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            getViewModel().onToastShown()
         }
     }
 }
