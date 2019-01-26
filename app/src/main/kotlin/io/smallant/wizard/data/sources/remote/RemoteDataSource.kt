@@ -3,21 +3,30 @@ package io.smallant.wizard.data.sources.remote
 import io.smallant.wizard.data.models.characters.Wizard
 import io.smallant.wizard.data.sources.DataSource
 import kotlinx.coroutines.delay
+import retrofit2.Response
 import java.io.IOException
 
 class RemoteDataSource(private val apiService: WizardService) : DataSource {
     override suspend fun fetchWizards(): Result<List<Wizard>> {
         delay(1000) // fake loading delay
-        val response = apiService.getWizards().await()
+        return manageResponse { apiService.getWizards().await() }
+    }
+
+    override suspend fun fetchWizard(id: Int): Result<Wizard> {
+        return manageResponse { apiService.getWizard(id).await() }
+    }
+
+    private suspend fun <T : Any> manageResponse(result: suspend () -> Response<T>): Result<T> {
+        val response = result()
         try {
             if (response.isSuccessful) {
                 response.body()?.let {
                     return Result.Success(it)
                 }
             }
-            return Result.Error(IOException("Error occurred during fetching wizards!"))
+            return Result.Error(IOException("Error occurred during fetching data!"))
         } catch (exception: Exception) {
-            return Result.Error(IOException("Unable to fetch wizards"))
+            return Result.Error(IOException("Unable to fetch data"))
         }
     }
 }

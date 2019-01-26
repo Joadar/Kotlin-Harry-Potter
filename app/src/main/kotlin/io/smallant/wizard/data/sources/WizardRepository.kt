@@ -14,4 +14,10 @@ class WizardRepository(private val remoteDataSource: RemoteDataSource) {
         }
     }
 
+    suspend fun fetchWizard(id: Int): Wizard {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.fetchWizard(id).await()
+        }
+    }
+
 }

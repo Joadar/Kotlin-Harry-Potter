@@ -6,4 +6,5 @@ import kotlinx.coroutines.Deferred
 
 interface DataSource {
     suspend fun fetchWizards(): Result<List<Wizard>>
+    suspend fun fetchWizard(id: Int): Result<Wizard>
 }

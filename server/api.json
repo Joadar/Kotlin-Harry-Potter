@@ -1,8 +1,24 @@
 {
-	"wizards": [
-		{
-			"firstname": "Jeanne",
-			"lastname": "Doe"
-		}
-	]
+  "wizards": [
+    {
+      "id": 1,
+      "firstname": "Harry",
+      "lastname": "Potter"
+    },
+    {
+      "id": 2,
+      "firstname": "Hermione",
+      "lastname": "Granger"
+    },
+    {
+      "id": 3,
+      "firstname": "Ron",
+      "lastname": "Weasley"
+    },
+    {
+      "id": 4,
+      "firstname": "Draco",
+      "lastname": "Malfoy"
+    }
+  ]
 }

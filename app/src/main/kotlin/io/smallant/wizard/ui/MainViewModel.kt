@@ -31,7 +31,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     fun fetchData() {
         launchDataLoad {
-            val firstWizard = wizardRepository.fetchWizards().first()
+            val firstWizard = wizardRepository.fetchWizard(3)
             _content.value = firstWizard.fullname
         }
     }
