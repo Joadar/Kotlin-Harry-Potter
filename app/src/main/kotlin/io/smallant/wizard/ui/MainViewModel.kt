@@ -6,9 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import io.smallant.wizard.data.sources.WizardRepository
 import io.smallant.wizard.data.sources.remote.APIManager
 import io.smallant.wizard.data.sources.remote.RemoteDataSource
-import io.smallant.wizard.data.sources.remote.Result
 import io.smallant.wizard.ui.base.BaseViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
 
@@ -27,18 +30,24 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         get() = _spinner
 
     fun fetchData() {
-        uiScope.launch {
-            _spinner.value = true
-            val result = withContext(Dispatchers.IO) {
-                wizardRepository.fetchWizards()
+        launchDataLoad {
+            val firstWizard = wizardRepository.fetchWizards().first()
+            _content.value = firstWizard.fullname
+        }
+    }
+
+    private fun launchDataLoad(block: suspend () -> Unit): Job {
+        return uiScope.launch {
+            if (_spinner.value == null || _spinner.value == false) {
+                try {
+                    _spinner.value = true
+                    block()
+                } catch (error: IOException) {
+                    sendSnackbar(error.message ?: "An error occured")
+                } finally {
+                    _spinner.value = false
+                }
             }
-            val message = when (result) {
-                is Result.Success -> result.data[0].fullname
-                is Result.Error -> result.exception.message ?: "Error on fetching wizards"
-            }
-            _spinner.value = false
-            _content.value = message
-            sendToast("Fetching wizards finished!")
         }
     }
 
