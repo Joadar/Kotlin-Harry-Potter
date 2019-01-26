@@ -21,14 +21,10 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     val content: LiveData<String>
         get() = _content
 
-    init {
-        fetchData()
-    }
-
-    private fun fetchData() {
-        _content.value = "Loading..."
-        var message: String
+    fun fetchData() {
         uiScope.launch {
+            _content.value = "Loading..."
+            val message: String
             val result = withContext(Dispatchers.IO) {
                 wizardRepository.fetchWizards()
             }
