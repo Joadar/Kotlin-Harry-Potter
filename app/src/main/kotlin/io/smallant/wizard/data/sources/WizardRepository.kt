@@ -10,18 +10,18 @@ import kotlinx.coroutines.withContext
 class WizardRepository(private val remoteDataSource: RemoteDataSource) {
 
     /* Houses */
-    suspend fun fetchHouses(): List<HowgwartHouse> {
+    suspend fun fetchHouses(): List<HogwartsHouse> {
         return withContext(Dispatchers.IO) {
             val houses = remoteDataSource.fetchHouses().await()
             houses.map {
-                val howgwartHouse = when (it.name) {
+                val hogwartsHouse = when (it.name) {
                     House.SLYTHERIN.asString() -> Slytherin()
                     House.RAVENCLAW.asString() -> Ravenclaw()
                     House.HUFFLEPUFF.asString() -> Hufflepuff()
                     else -> Gryffindor()
                 }
-                howgwartHouse.image = it.image
-                howgwartHouse
+                hogwartsHouse.image = it.image
+                hogwartsHouse
             }
         }
     }

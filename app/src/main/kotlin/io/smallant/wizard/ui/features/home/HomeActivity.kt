@@ -7,16 +7,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.smallant.wizard.R
-import io.smallant.wizard.data.models.houses.HowgwartHouse
+import io.smallant.wizard.data.models.houses.HogwartsHouse
 import io.smallant.wizard.databinding.ActivityHomeBinding
-import io.smallant.wizard.extensions.listenEvent
 import io.smallant.wizard.ui.base.BaseActivity
 import io.smallant.wizard.ui.base.BaseRecyclerAdapter
 import io.smallant.wizard.ui.features.house.HouseActivity
 import io.smallant.wizard.utils.HOUSE_ID
 import io.smallant.wizard.utils.HOUSE_NAME
 
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), BaseRecyclerAdapter.OnItemClickListener<HowgwartHouse> {
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), BaseRecyclerAdapter.OnItemClickListener<HogwartsHouse> {
 
     private val housesAdapter: HousesRecyclerAdapter = HousesRecyclerAdapter(this)
 
@@ -48,7 +47,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), BaseRec
         })
     }
 
-    override fun onItemClick(item: HowgwartHouse) {
+    override fun onItemClick(item: HogwartsHouse) {
         val intent = Intent(this@HomeActivity, HouseActivity::class.java)
         intent.putExtra(HOUSE_ID, item.id)
         intent.putExtra(HOUSE_NAME, item.name)

@@ -4,7 +4,7 @@ import io.smallant.wizard.R
 import io.smallant.wizard.data.models.houses.House
 import io.smallant.wizard.data.models.houses.asString
 
-fun String?.getHowgwartHouseTheme(): Int {
+fun String?.getHogwartsHouseTheme(): Int {
     return when (this) {
         House.GRYFFINDOR.asString() -> R.style.AppTheme_House_Gryffindor
         House.SLYTHERIN.asString() -> R.style.AppTheme_House_Slytherin

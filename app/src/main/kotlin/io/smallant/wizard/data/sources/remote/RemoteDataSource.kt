@@ -1,8 +1,7 @@
 package io.smallant.wizard.data.sources.remote
 
 import io.smallant.wizard.data.models.characters.Wizard
-import io.smallant.wizard.data.models.houses.HowgwartHouse
-import io.smallant.wizard.data.models.houses.HowgwartHouseInfo
+import io.smallant.wizard.data.models.houses.HogwartsHouseInfo
 import io.smallant.wizard.data.sources.DataSource
 import kotlinx.coroutines.delay
 import retrofit2.Response
@@ -11,7 +10,7 @@ import java.io.IOException
 class RemoteDataSource(private val apiService: WizardService) : DataSource {
 
     /* Houses */
-    override suspend fun fetchHouses(): Result<List<HowgwartHouseInfo>> {
+    override suspend fun fetchHouses(): Result<List<HogwartsHouseInfo>> {
         return manageResponse { apiService.getHouses().await() }
     }
 

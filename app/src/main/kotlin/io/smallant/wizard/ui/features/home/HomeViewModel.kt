@@ -3,7 +3,7 @@ package io.smallant.wizard.ui.features.home
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import io.smallant.wizard.data.models.houses.HowgwartHouse
+import io.smallant.wizard.data.models.houses.HogwartsHouse
 import io.smallant.wizard.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -11,9 +11,9 @@ import java.io.IOException
 class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     private val _spinner = MutableLiveData<Boolean>()
-    private val _houses: MutableLiveData<List<HowgwartHouse>> = MutableLiveData()
+    private val _houses: MutableLiveData<List<HogwartsHouse>> = MutableLiveData()
 
-    val houses: LiveData<List<HowgwartHouse>>
+    val houses: LiveData<List<HogwartsHouse>>
         get() = _houses
 
     val spinner: LiveData<Boolean>

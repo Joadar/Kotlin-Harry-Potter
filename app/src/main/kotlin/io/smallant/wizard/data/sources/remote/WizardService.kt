@@ -1,7 +1,7 @@
 package io.smallant.wizard.data.sources.remote
 
 import io.smallant.wizard.data.models.characters.Wizard
-import io.smallant.wizard.data.models.houses.HowgwartHouseInfo
+import io.smallant.wizard.data.models.houses.HogwartsHouseInfo
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
@@ -11,10 +11,10 @@ interface WizardService {
 
     /* Houses */
 
-    @GET("/houses")
-    fun getHouses(): Deferred<Response<List<HowgwartHouseInfo>>>
+    @GET("/HOUSES")
+    fun getHouses(): Deferred<Response<List<HogwartsHouseInfo>>>
 
-    @GET("/houses/{id}/wizards")
+    @GET("/HOUSES/{id}/wizards")
     fun getWizardsFromHouse(@Path("id") id: Int): Deferred<Response<List<Wizard>>>
 
     /* Wizards */

@@ -3,7 +3,7 @@
     <data>
         <variable
                 name="obj"
-                type="io.smallant.wizard.data.models.houses.HowgwartHouse"/>
+                type="io.smallant.wizard.data.models.houses.HogwartsHouse"/>
     </data>
 
     <LinearLayout
@@ -21,7 +21,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@{obj.name}"
-                tools:text="@string/howgwart"
+                tools:text="@string/hogwarts"
                 style="@style/House.Name"/>
 
         <ImageView

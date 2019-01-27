@@ -3,13 +3,13 @@ package io.smallant.wizard.data.models.houses
 import io.smallant.wizard.data.models.characters.Sexe
 import io.smallant.wizard.data.models.characters.Wizard
 
-open class HowgwartHouseInfo {
+open class HogwartsHouseInfo {
     open val id: Int? = null
     open val name: String? = null
     var image: String? = null
 }
 
-sealed class HowgwartHouse(private val house: House, val founder: Wizard) : HowgwartHouseInfo() {
+sealed class HogwartsHouse(private val house: House, val founder: Wizard) : HogwartsHouseInfo() {
     override val name: String
         get() = house.asString()
 
@@ -20,7 +20,7 @@ sealed class HowgwartHouse(private val house: House, val founder: Wizard) : Howg
     abstract val animal: String
 
     companion object {
-        val houses: List<HowgwartHouse> = listOf(
+        val HOUSES: List<HogwartsHouse> = listOf(
             Gryffindor(),
             Hufflepuff(),
             Ravenclaw(),
@@ -29,25 +29,25 @@ sealed class HowgwartHouse(private val house: House, val founder: Wizard) : Howg
     }
 }
 
-class Gryffindor : HowgwartHouse(House.GRYFFINDOR, Wizard("Godric", "Gryffindor", Sexe.MALE)) {
+class Gryffindor : HogwartsHouse(House.GRYFFINDOR, Wizard("Godric", "Gryffindor", Sexe.MALE)) {
     override val id: Int = 1
     override val commonRoom: String = "Gryffindor Tower"
     override val animal: String = "Lion"
 }
 
-class Hufflepuff : HowgwartHouse(House.HUFFLEPUFF, Wizard("Helga", "Hufflepuff", Sexe.FEMALE)) {
+class Hufflepuff : HogwartsHouse(House.HUFFLEPUFF, Wizard("Helga", "Hufflepuff", Sexe.FEMALE)) {
     override val id: Int = 3
     override val commonRoom: String = "Hufflepuff Basement"
     override val animal: String = "Badger"
 }
 
-class Ravenclaw : HowgwartHouse(House.RAVENCLAW, Wizard("Rowena", "Ravenclaw", Sexe.FEMALE)) {
+class Ravenclaw : HogwartsHouse(House.RAVENCLAW, Wizard("Rowena", "Ravenclaw", Sexe.FEMALE)) {
     override val id: Int = 4
     override val commonRoom: String = "Ravenclaw Tower"
     override val animal: String = "Eagle"
 }
 
-class Slytherin : HowgwartHouse(House.SLYTHERIN, Wizard("Salazar", "Slytherin", Sexe.MALE)) {
+class Slytherin : HogwartsHouse(House.SLYTHERIN, Wizard("Salazar", "Slytherin", Sexe.MALE)) {
     override val id: Int = 2
     override val commonRoom: String = "Slytherin Dungeon"
     override val animal: String = "Snake"

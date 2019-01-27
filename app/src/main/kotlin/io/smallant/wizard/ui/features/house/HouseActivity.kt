@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import io.smallant.wizard.R
 import io.smallant.wizard.databinding.ActivityHouseBinding
-import io.smallant.wizard.extensions.getHowgwartHouseTheme
+import io.smallant.wizard.extensions.getHogwartsHouseTheme
 import io.smallant.wizard.ui.base.BaseActivity
 import io.smallant.wizard.utils.HOUSE_ID
 import io.smallant.wizard.utils.HOUSE_NAME
@@ -20,7 +20,7 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        var houseName: String? = getString(R.string.howgwart)
+        var houseName: String? = getString(R.string.hogwarts)
         var houseId = 0
 
         intent?.extras?.let { bundle ->
@@ -28,7 +28,7 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
             houseName = bundle.getString(HOUSE_NAME)
         }
 
-        val theme: Int = houseName.getHowgwartHouseTheme()
+        val theme: Int = houseName.getHogwartsHouseTheme()
         setTheme(theme)
 
         super.onCreate(savedInstanceState)

@@ -4,7 +4,7 @@ import io.smallant.wizard.data.models.houses.*
 
 
 object Enemy {
-    fun house(house: HowgwartHouse) = when (house) {
+    fun house(house: HogwartsHouse) = when (house) {
         is Gryffindor -> House.SLYTHERIN
         is Hufflepuff -> House.RAVENCLAW
         is Ravenclaw -> House.HUFFLEPUFF

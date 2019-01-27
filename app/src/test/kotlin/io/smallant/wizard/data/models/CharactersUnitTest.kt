@@ -63,7 +63,7 @@ class CharactersUnitTest {
     fun `is sorting correct`() {
         SortingHat.sort(harryPotter, Gryffindor())
         assertTrue(harryPotter.house is Gryffindor)
-        assertTrue(harryPotter.house is HowgwartHouse)
+        assertTrue(harryPotter.house is HogwartsHouse)
     }
 
     @Test
