@@ -8,6 +8,7 @@ interface DataSource {
 
     /* Houses */
     suspend fun fetchHouses(): Result<List<HowgwartHouseInfo>>
+    suspend fun fetchWizardsFromHouse(houseId: Int): Result<List<Wizard>>
 
     /* Wizards */
     suspend fun fetchWizards(): Result<List<Wizard>>

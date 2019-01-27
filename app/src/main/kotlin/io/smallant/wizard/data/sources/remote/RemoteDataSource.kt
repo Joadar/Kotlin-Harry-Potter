@@ -9,6 +9,17 @@ import retrofit2.Response
 import java.io.IOException
 
 class RemoteDataSource(private val apiService: WizardService) : DataSource {
+
+    /* Houses */
+    override suspend fun fetchHouses(): Result<List<HowgwartHouseInfo>> {
+        return manageResponse { apiService.getHouses().await() }
+    }
+
+    override suspend fun fetchWizardsFromHouse(houseId: Int): Result<List<Wizard>> {
+        return manageResponse { apiService.getWizardsFromHouse(houseId).await() }
+    }
+
+    /* Wizards */
     override suspend fun fetchWizards(): Result<List<Wizard>> {
         delay(1000) // fake loading delay
         return manageResponse { apiService.getWizards().await() }
@@ -16,10 +27,6 @@ class RemoteDataSource(private val apiService: WizardService) : DataSource {
 
     override suspend fun fetchWizard(id: Int): Result<Wizard> {
         return manageResponse { apiService.getWizard(id).await() }
-    }
-
-    override suspend fun fetchHouses(): Result<List<HowgwartHouseInfo>> {
-        return manageResponse { apiService.getHouses().await() }
     }
 
     private suspend fun <T : Any> manageResponse(result: suspend () -> Response<T>): Result<T> {

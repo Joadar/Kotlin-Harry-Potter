@@ -9,12 +9,19 @@ import retrofit2.http.Path
 
 interface WizardService {
 
+    /* Houses */
+
+    @GET("/houses")
+    fun getHouses(): Deferred<Response<List<HowgwartHouseInfo>>>
+
+    @GET("/houses/{id}/wizards")
+    fun getWizardsFromHouse(@Path("id") id: Int): Deferred<Response<List<Wizard>>>
+
+    /* Wizards */
+
     @GET("/wizards")
     fun getWizards(): Deferred<Response<List<Wizard>>>
 
     @GET("/wizards/{id}")
     fun getWizard(@Path("id") id: Int): Deferred<Response<Wizard>>
-
-    @GET("/houses")
-    fun getHouses(): Deferred<Response<List<HowgwartHouseInfo>>>
 }

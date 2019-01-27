@@ -9,18 +9,7 @@ import kotlinx.coroutines.withContext
 
 class WizardRepository(private val remoteDataSource: RemoteDataSource) {
 
-    suspend fun fetchWizards(): List<Wizard> {
-        return withContext(Dispatchers.IO) {
-            remoteDataSource.fetchWizards().await()
-        }
-    }
-
-    suspend fun fetchWizard(id: Int): Wizard {
-        return withContext(Dispatchers.IO) {
-            remoteDataSource.fetchWizard(id).await()
-        }
-    }
-
+    /* Houses */
     suspend fun fetchHouses(): List<HowgwartHouse> {
         return withContext(Dispatchers.IO) {
             val houses = remoteDataSource.fetchHouses().await()
@@ -34,6 +23,25 @@ class WizardRepository(private val remoteDataSource: RemoteDataSource) {
                 howgwartHouse.image = it.image
                 howgwartHouse
             }
+        }
+    }
+
+    suspend fun fetchWizardsFromHouse(houseId: Int) : List<Wizard> {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.fetchWizardsFromHouse(houseId).await()
+        }
+    }
+
+    /* Wizards */
+    suspend fun fetchWizards(): List<Wizard> {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.fetchWizards().await()
+        }
+    }
+
+    suspend fun fetchWizard(id: Int): Wizard {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.fetchWizard(id).await()
         }
     }
 
