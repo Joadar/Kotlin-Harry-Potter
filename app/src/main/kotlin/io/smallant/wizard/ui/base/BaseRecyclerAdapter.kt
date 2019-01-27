@@ -6,7 +6,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseRecyclerAdapter<T : Any> : RecyclerView.Adapter<BaseViewHolder>() {
+abstract class BaseRecyclerAdapter<T : Any>(private val itemClickListener: OnItemClickListener<T>? = null) : RecyclerView.Adapter<BaseViewHolder>() {
+
+    interface OnItemClickListener<T> {
+        fun onItemClick(item: T)
+    }
 
     private val items: ArrayList<T> = arrayListOf()
 
@@ -32,8 +36,13 @@ abstract class BaseRecyclerAdapter<T : Any> : RecyclerView.Adapter<BaseViewHolde
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val obj: Any = items[position]
-        holder.bind(obj)
+        val obj = items[position]
+        with(holder) {
+            itemView.setOnClickListener{
+                itemClickListener?.onItemClick(obj)
+            }
+            bind(obj)
+        }
     }
 
     override fun getItemCount(): Int = items.size

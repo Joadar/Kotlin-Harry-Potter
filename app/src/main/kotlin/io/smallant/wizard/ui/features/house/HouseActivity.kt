@@ -16,10 +16,21 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var houseName: String? = "Howgwart"
         intent?.extras?.let { bundle ->
             val houseId = bundle.getInt(HOUSE_ID, 0)
-            val houseName = bundle.getString(HOUSE_NAME)
+            houseName = bundle.getString(HOUSE_NAME)
             Log.d("HouseLog", "$houseName | houseId selected = $houseId")
         }
+        //setSupportActionBar(findViewById(R.id.toolbar))
+        with(supportActionBar) {
+            this?.title = houseName
+            this?.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
