@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="io.smallant.wizard.ui.MainViewModel"
+                type="io.smallant.wizard.ui.features.house.HouseViewModel"
         />
         <import type="android.view.View"/>
     </data>
@@ -15,8 +15,8 @@
             android:id="@+id/rootLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="@{() -> viewModel.fetchData()}"
-            tools:context=".ui.MainActivity">
+            android:onClick="@{() -> viewModel.houseClicked()}"
+            tools:context=".ui.features.home.HomeActivity">
 
         <TextView
                 android:id="@+id/content"

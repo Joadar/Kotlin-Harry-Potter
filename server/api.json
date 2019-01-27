@@ -1,24 +1,50 @@
 {
+  "houses": [
+    {
+      "id": 1,
+      "name": "Gryffindor",
+      "image": "https://vignette.wikia.nocookie.net/harrypotter/images/8/8e/0.31_Gryffindor_Crest_Transparent.png/revision/latest/scale-to-width-down/700?cb=20161124074004"
+    },
+    {
+      "id": 2,
+      "name": "Slytherin",
+      "image": "https://vignette.wikia.nocookie.net/harrypotter/images/d/d3/0.61_Slytherin_Crest_Transparent.png/revision/latest/scale-to-width-down/700?cb=20161020182557"
+    },
+    {
+      "id": 3,
+      "name": "Hufflepuff",
+      "image": "https://vignette.wikia.nocookie.net/harrypotter/images/5/50/0.51_Hufflepuff_Crest_Transparent.png/revision/latest/scale-to-width-down/700?cb=20161020182518"
+    },
+    {
+      "id": 4,
+      "name": "Ravenclaw",
+      "image": "https://vignette.wikia.nocookie.net/harrypotter/images/2/29/0.41_Ravenclaw_Crest_Transparent.png/revision/latest/scale-to-width-down/700?cb=20161020182442"
+    }
+  ],
   "wizards": [
     {
       "id": 1,
       "firstname": "Harry",
-      "lastname": "Potter"
+      "lastname": "Potter",
+      "houseId": 1
     },
     {
       "id": 2,
       "firstname": "Hermione",
-      "lastname": "Granger"
+      "lastname": "Granger",
+      "houseId": 1
     },
     {
       "id": 3,
       "firstname": "Ron",
-      "lastname": "Weasley"
+      "lastname": "Weasley",
+      "houseId": 1
     },
     {
       "id": 4,
       "firstname": "Draco",
-      "lastname": "Malfoy"
+      "lastname": "Malfoy",
+      "houseId": 2
     }
   ]
 }
