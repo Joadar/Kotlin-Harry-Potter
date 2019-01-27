@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.House"/>
+
+    <!-- Gryffindor -->
+    <style name="AppTheme.House.Gryffindor">
+        <item name="colorPrimary">@color/colorPrimaryGryffindor</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkGryffindor</item>
+        <item name="colorAccent">@color/colorAccentGryffindor</item>
+    </style>
+
+    <!-- Slytherin -->
+    <style name="AppTheme.House.Slytherin">
+        <item name="colorPrimary">@color/colorPrimarySlytherin</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkSlytherin</item>
+        <item name="colorAccent">@color/colorAccentSlytherin</item>
+    </style>
+
+    <!-- Ravenclaw -->
+    <style name="AppTheme.House.Ravenclaw">
+        <item name="colorPrimary">@color/colorPrimaryRavenclaw</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRavenclaw</item>
+        <item name="colorAccent">@color/colorAccentRavenclaw</item>
+    </style>
+
+    <!-- Hufflepuff -->
+    <style name="AppTheme.House.Hufflepuff">
+        <item name="colorPrimary">@color/colorPrimaryHufflepuff</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkHufflepuff</item>
+        <item name="colorAccent">@color/colorAccentHufflepuff</item>
+    </style>
+</resources>

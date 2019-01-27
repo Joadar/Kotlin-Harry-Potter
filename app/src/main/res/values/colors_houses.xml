@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Gryffindor -->
+    <color name="colorPrimaryGryffindor">#ae0001</color>
+    <color name="colorPrimaryDarkGryffindor">#740001</color>
+    <color name="colorAccentGryffindor">#eeba30</color>
+
+    <!-- Slytherin -->
+    <color name="colorPrimarySlytherin">#2a623d</color>
+    <color name="colorPrimaryDarkSlytherin">#1a472a</color>
+    <color name="colorAccentSlytherin">#aaaaaa</color>
+
+    <!-- Ravenclaw -->
+    <color name="colorPrimaryRavenclaw">#222f5b</color>
+    <color name="colorPrimaryDarkRavenclaw">#0e1a40</color>
+    <color name="colorAccentRavenclaw">#946b2d</color>
+
+    <!-- Hufflepuff -->
+    <color name="colorPrimaryHufflepuff">#f0c75e</color>
+    <color name="colorPrimaryDarkHufflepuff">#ecb939</color>
+    <color name="colorAccentHufflepuff">#372e29</color>
+</resources>
