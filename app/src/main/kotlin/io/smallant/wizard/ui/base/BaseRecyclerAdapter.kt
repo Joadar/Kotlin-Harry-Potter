@@ -6,11 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder>() {
+abstract class BaseRecyclerAdapter<T : Any> : RecyclerView.Adapter<BaseViewHolder>() {
 
-    protected val items: ArrayList<T> = arrayListOf()
+    private val items: ArrayList<T> = arrayListOf()
 
-    // protected abstract fun getObjAtPosition(position: Int): Any
     protected abstract fun getLayoutIdAtPosition(position: Int): Int
 
     fun setItems(list: List<T>?, clearList: Boolean = false) {
@@ -33,7 +32,7 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val obj: Any = items[position] as Any
+        val obj: Any = items[position]
         holder.bind(obj)
     }
 

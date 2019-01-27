@@ -16,9 +16,7 @@ import io.smallant.wizard.utils.HOUSE_NAME
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
-    private val housesAdapter: HousesRecyclerAdapter =
-        HousesRecyclerAdapter()
-
+    private val housesAdapter: HousesRecyclerAdapter = HousesRecyclerAdapter()
 
     override fun getLayoutId(): Int = R.layout.activity_home
     override fun getViewModel(): HomeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
@@ -31,7 +29,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
             setLifecycleOwner(this@HomeActivity)
         }
 
-        getViewModel().loadHouses()
+        if (savedInstanceState == null) {
+            getViewModel().loadHouses()
+        }
 
         getViewModel().openHouse.listenEvent(this) { house ->
             val intent = Intent(this@HomeActivity, HouseActivity::class.java)
