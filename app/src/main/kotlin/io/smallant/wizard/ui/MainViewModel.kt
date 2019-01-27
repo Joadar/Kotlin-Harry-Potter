@@ -7,10 +7,7 @@ import io.smallant.wizard.data.sources.WizardRepository
 import io.smallant.wizard.data.sources.remote.APIManager
 import io.smallant.wizard.data.sources.remote.RemoteDataSource
 import io.smallant.wizard.ui.base.BaseViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.io.IOException
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
@@ -53,6 +50,6 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     override fun onCleared() {
         super.onCleared()
-        viewModelJob.cancel()
+        uiScope.coroutineContext.cancelChildren()
     }
 }
