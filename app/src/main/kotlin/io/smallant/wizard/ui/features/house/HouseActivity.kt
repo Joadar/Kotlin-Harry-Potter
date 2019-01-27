@@ -1,7 +1,6 @@
 package io.smallant.wizard.ui.features.house
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import io.smallant.wizard.R
 import io.smallant.wizard.databinding.ActivityHouseBinding
@@ -16,16 +15,22 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var houseName: String? = "Howgwart"
+
+        var houseName: String? = getString(R.string.howgwart)
+        var houseId: Int = 0
+
         intent?.extras?.let { bundle ->
-            val houseId = bundle.getInt(HOUSE_ID, 0)
+            houseId = bundle.getInt(HOUSE_ID, 0)
             houseName = bundle.getString(HOUSE_NAME)
-            Log.d("HouseLog", "$houseName | houseId selected = $houseId")
         }
-        //setSupportActionBar(findViewById(R.id.toolbar))
+
         with(supportActionBar) {
             this?.title = houseName
             this?.setDisplayHomeAsUpEnabled(true)
+        }
+
+        if(savedInstanceState == null) {
+
         }
     }
 

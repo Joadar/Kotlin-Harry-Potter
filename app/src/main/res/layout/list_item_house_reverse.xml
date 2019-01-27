@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="obj"
@@ -20,7 +20,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@{obj.name}"/>
+                android:text="@{obj.name}"
+                tools:text="@string/howgwart"
+                style="@style/House.Name"/>
 
         <ImageView
                 android:layout_width="0dp"
