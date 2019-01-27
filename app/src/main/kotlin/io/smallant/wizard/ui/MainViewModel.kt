@@ -28,7 +28,8 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     fun fetchData() {
         launchDataLoad {
-            val firstWizard = wizardRepository.fetchWizard(3)
+            val randomId = (1..6).random()
+            val firstWizard = wizardRepository.fetchWizard(randomId)
             _content.value = firstWizard.fullname
         }
     }
