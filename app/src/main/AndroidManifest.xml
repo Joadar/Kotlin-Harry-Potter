@@ -13,12 +13,14 @@
             android:theme="@style/AppTheme">
         <activity android:name="io.smallant.wizard.ui.features.home.HomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.features.house.HouseActivity"/>
+        <activity
+                android:launchMode="singleTop"
+                android:name=".ui.features.house.HouseActivity"/>
     </application>
 
 </manifest>

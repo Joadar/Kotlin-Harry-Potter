@@ -33,7 +33,6 @@
                  android:visibility="@{viewModel.empty != null ? View.VISIBLE : View.GONE}"
                  bind:message="@{viewModel.empty}"/>
 
-
         <ProgressBar
                 android:id="@+id/spinner"
                 android:visibility="@{viewModel.spinner ? View.VISIBLE : View.GONE}"
