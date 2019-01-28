@@ -11,10 +11,10 @@ interface WizardService {
 
     /* Houses */
 
-    @GET("/HOUSES")
+    @GET("/houses")
     fun getHouses(): Deferred<Response<List<HogwartsHouseInfo>>>
 
-    @GET("/HOUSES/{id}/wizards")
+    @GET("/houses/{id}/wizards")
     fun getWizardsFromHouse(@Path("id") id: Int): Deferred<Response<List<Wizard>>>
 
     /* Wizards */

@@ -4,10 +4,10 @@
         <variable name="message" type="java.lang.String"/>
     </data>
     <TextView
-            android:id="@+id/error"
-            android:drawableTop="@drawable/ic_deathly_hallows_grey_160dp"
+            android:id="@+id/empty"
+            android:drawableTop="@drawable/ic_sorting_hat_grey_160dp"
             android:text="@{message}"
-            style="@style/Status"
+            style="@style/Status.Empty"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

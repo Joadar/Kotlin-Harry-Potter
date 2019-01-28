@@ -2,4 +2,6 @@
     <string name="app_name">Wizard</string>
 
     <string name="hogwarts">Hogwarts</string>
+
+    <string name="house_empty">None wizards for this house yet</string>
 </resources>
