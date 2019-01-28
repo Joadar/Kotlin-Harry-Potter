@@ -16,6 +16,8 @@ class HouseViewModel(application: Application) : BaseViewModel(application) {
     private val _wizards: MutableLiveData<List<Wizard>> = MutableLiveData()
     private val _spinner = MutableLiveData<Boolean>()
     private val _empty = MutableLiveData<String>()
+    private val _error = MutableLiveData<String>()
+    private val _displayContent = MutableLiveData<Boolean>()
 
     private val resources: Resources by lazy { getApplication<Application>().resources }
 
@@ -23,13 +25,27 @@ class HouseViewModel(application: Application) : BaseViewModel(application) {
         get() = _wizards
 
     val spinner: LiveData<Boolean>
-        get() = _spinner
+        get() {
+            _displayContent.value = (_spinner.value == false && _empty.value == null && _error.value == null)
+            return _spinner
+        }
 
     val empty: LiveData<String>
-        get() = _empty
+        get() {
+            _displayContent.value = _empty.value == null
+            return _empty
+        }
+
+    val error: LiveData<String>
+        get() {
+            _displayContent.value = _error.value == null
+            return _error
+        }
+
+    val displayContent: LiveData<Boolean>
+        get() = _displayContent
 
     fun fetchData(houseId: Int) {
-        _empty.value = null
         launchDataLoad {
             val wizards = wizardRepository.fetchWizardsFromHouse(houseId)
             if (wizards.isEmpty())
@@ -42,10 +58,13 @@ class HouseViewModel(application: Application) : BaseViewModel(application) {
         return uiScope.launch {
             if (_spinner.value == null || _spinner.value == false) {
                 try {
+                    _empty.value = null
+                    _error.value = null
                     _spinner.value = true
                     block()
                 } catch (error: IOException) {
-                    sendSnackbar(error.message ?: "An error occured")
+                    _error.value = error.message
+                    //sendSnackbar(error.message ?: "An error occured")
                 } finally {
                     _spinner.value = false
                 }

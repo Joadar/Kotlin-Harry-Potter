@@ -22,12 +22,16 @@
                 android:id="@+id/content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.empty == null ? View.VISIBLE : View.GONE}"
+                android:visibility="@{viewModel.displayContent ? View.VISIBLE : View.GONE}"
                 android:text="Wizards"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+        <include layout="@layout/inc_error"
+                 android:visibility="@{viewModel.error != null ? View.VISIBLE : View.GONE}"
+                 bind:message="@{viewModel.error}"/>
 
         <include layout="@layout/inc_empty"
                  android:visibility="@{viewModel.empty != null ? View.VISIBLE : View.GONE}"

@@ -15,6 +15,7 @@ class RemoteDataSource(private val apiService: WizardService) : DataSource {
     }
 
     override suspend fun fetchWizardsFromHouse(houseId: Int): Result<List<Wizard>> {
+        delay(500) // fake loading delay
         return manageResponse { apiService.getWizardsFromHouse(houseId).await() }
     }
 
