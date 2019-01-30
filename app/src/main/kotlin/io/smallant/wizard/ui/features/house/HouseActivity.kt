@@ -1,10 +1,10 @@
 package io.smallant.wizard.ui.features.house
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import io.smallant.wizard.R
 import io.smallant.wizard.databinding.ActivityHouseBinding
 import io.smallant.wizard.extensions.getHogwartsHouseActionBarIcon
@@ -14,6 +14,8 @@ import io.smallant.wizard.utils.HOUSE_ID
 import io.smallant.wizard.utils.HOUSE_NAME
 
 class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
+
+    private val wizardsAdapter: WizardsRecyclerAdapter = WizardsRecyclerAdapter()
 
     override fun getLayoutId(): Int = R.layout.activity_house
     override fun getViewModel(): HouseViewModel = ViewModelProviders.of(this).get(HouseViewModel::class.java)
@@ -50,8 +52,16 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
             getViewModel().fetchData(houseId)
         }
 
+        viewDataBinding?.recyclerWizards?.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@HouseActivity)
+            if (adapter == null) {
+                adapter = wizardsAdapter
+            }
+        }
+
         getViewModel().wizards.observe(this, Observer { wizards ->
-            Log.d("HouseLog", "wizards = ${wizards.size}")
+            wizardsAdapter.setItems(wizards)
         })
     }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="obj" type="io.smallant.wizard.data.models.characters.Wizard"/>
+    </data>
+    <TextView
+            android:id="@+id/fullname"
+            android:text="@{obj.fullname}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</layout>
