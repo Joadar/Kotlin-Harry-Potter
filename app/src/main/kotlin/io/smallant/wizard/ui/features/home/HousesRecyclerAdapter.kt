@@ -10,7 +10,7 @@ import io.smallant.wizard.ui.base.BaseRecyclerAdapter
 class HousesRecyclerAdapter(itemClickListener: OnItemClickListener<HogwartsHouse>) :
     BaseRecyclerAdapter<HogwartsHouse>(itemClickListener) {
 
-    override fun getLayoutIdAtPosition(position: Int): Int =
+    override fun getLayoutId(item: HogwartsHouse, position: Int): Int =
         if (position % 2 == 0) R.layout.list_item_house else R.layout.list_item_house_reverse
 
     override fun editBinding(parent: ViewGroup, binding: ViewDataBinding) {

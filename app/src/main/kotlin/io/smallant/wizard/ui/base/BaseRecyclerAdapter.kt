@@ -1,6 +1,7 @@
 package io.smallant.wizard.ui.base
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -16,8 +17,9 @@ abstract class BaseRecyclerAdapter<T : Any>(private val itemClickListener: OnIte
 
     private val items: ArrayList<T> = arrayListOf()
 
-    protected abstract fun getLayoutIdAtPosition(position: Int): Int
+    protected abstract fun getLayoutId(item: T, position: Int): Int
     protected open fun editBinding(parent: ViewGroup, binding: ViewDataBinding) {}
+    protected open fun editViewHolder(root: View, item: T, position: Int) {}
 
     fun setItems(list: List<T>?, clearList: Boolean = false) {
         if (clearList)
@@ -47,6 +49,7 @@ abstract class BaseRecyclerAdapter<T : Any>(private val itemClickListener: OnIte
             itemView.setOnClickListener {
                 itemClickListener?.onItemClick(obj)
             }
+            editViewHolder(itemView, obj, position)
             bind(obj)
         }
     }
@@ -54,7 +57,7 @@ abstract class BaseRecyclerAdapter<T : Any>(private val itemClickListener: OnIte
     override fun getItemCount(): Int = items.size
 
     override fun getItemViewType(position: Int): Int {
-        return getLayoutIdAtPosition(position)
+        return getLayoutId(items[position], position)
     }
 
 }
