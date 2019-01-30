@@ -8,10 +8,13 @@ import io.smallant.wizard.data.models.characters.Wizard
 import io.smallant.wizard.data.sources.remote.RemoteDataSource
 import io.smallant.wizard.data.sources.remote.WizardService
 import kotlinx.coroutines.runBlocking
+import okhttp3.MediaType
+import okhttp3.ResponseBody
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
+import java.io.IOException
 
 class SourcesUnitTest {
 
@@ -38,6 +41,15 @@ class SourcesUnitTest {
         coEvery { wizardService.getWizard(1).await() } coAnswers {
             Response.success(Wizard("Jeanne", "Doe", Sexe.FEMALE))
         }
+        coEvery { wizardService.getWizard(0).await() }.coAnswers {
+            Response.error(
+                400,
+                ResponseBody.create(
+                    MediaType.parse("application/json"),
+                    "{\"message\": \"Bad Request\"}"
+                )
+            )
+        }
     }
 
     @Test
@@ -56,6 +68,13 @@ class SourcesUnitTest {
             with(repository.fetchWizard(1)) {
                 assertEquals("Jeanne Doe", fullname)
             }
+        }
+    }
+
+    @Test(expected = IOException::class)
+    fun `fetch specific wizard should fail`() {
+        runBlocking {
+            repository.fetchWizard(0)
         }
     }
 }
