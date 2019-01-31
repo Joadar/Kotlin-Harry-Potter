@@ -6,6 +6,7 @@ import io.mockk.mockk
 import io.smallant.wizard.data.models.characters.Sexe
 import io.smallant.wizard.data.models.characters.Wizard
 import io.smallant.wizard.data.sources.remote.RemoteDataSource
+import io.smallant.wizard.data.sources.remote.Result
 import io.smallant.wizard.data.sources.remote.WizardService
 import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType
@@ -41,7 +42,7 @@ class SourcesUnitTest {
         coEvery { wizardService.getWizard(1).await() } coAnswers {
             Response.success(Wizard("Jeanne", "Doe", Sexe.FEMALE))
         }
-        coEvery { wizardService.getWizard(0).await() }.coAnswers {
+        coEvery { wizardService.getWizard(-1).await() }.coAnswers {
             Response.error(
                 400,
                 ResponseBody.create(
@@ -72,9 +73,21 @@ class SourcesUnitTest {
     }
 
     @Test(expected = IOException::class)
-    fun `fetch specific wizard should fail`() {
+    fun `fetch specific wizard should throw an IOException`() {
         runBlocking {
-            repository.fetchWizard(0)
+            repository.fetchWizard(-1)
+        }
+    }
+
+    @Test
+    fun `fetch specific wizard should fail`() {
+        val remote: RemoteDataSource = mockk()
+        coEvery { remote.fetchWizard(0) }.coAnswers {
+            Result.Error(IOException("Error fetching wizard 0"))
+        }
+        runBlocking {
+            val result: Result.Error = remote.fetchWizard(0) as Result.Error
+            assertEquals(IOException("Error fetching wizard 0").message, result.exception.message)
         }
     }
 }
