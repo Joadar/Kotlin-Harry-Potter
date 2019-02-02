@@ -64,5 +64,30 @@
       "lastname": "Weasley",
       "houseId": 1
     }
+  ],
+  "relationship": [
+    {
+      "id": 1,
+      "originalWizard": 1,
+      "wizardId": 2,
+      "status": "Friend"
+    },
+    {
+      "id": 2,
+      "originalWizard": 1,
+      "wizardId": 3,
+      "status": "Friend"
+    },
+    {
+      "id": 2,
+      "originalWizard": 1,
+      "wizardId": 7,
+      "status": "Wife"
+    },
+    {
+      "id": 2,
+      "originalWizard": 5,
+      "wizardId": 7
+    }
   ]
 }
