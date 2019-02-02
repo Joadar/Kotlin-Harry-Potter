@@ -94,15 +94,13 @@ class CharactersUnitTest {
 
     @Test
     fun `is number of students correct`() {
-        val nbStudents = listOfWizards.filter { it is Student }.count()
+        val nbStudents = listOfWizards.filterIsInstance<Student>().count()
         assertEquals(4, nbStudents)
     }
 
     @Test
     fun `is number of students per house correct`() {
-        @Suppress("unchecked_cast")
-        val houseStudents = (listOfWizards.filter { it is Student } as List<Student>)
-            .groupBy { it.house }
+        val houseStudents = listOfWizards.filterIsInstance<Student>().groupBy { it.house }
         val gryffindorStudents = houseStudents[gryffindor]
         val slytherinStudents = houseStudents[slytherin]
         val ravenclawStudents = houseStudents[ravenclaw]

@@ -22,8 +22,8 @@ class HomeViewModelTest {
     fun whenSuccessfulLoadData_ShowAndHideSpinner() {
         runBlocking {
             subject.spinner.captureValues {
-                subject.fetchData()
-                assertSendsValues(2_000, true, false)
+                subject.loadHouses()
+                assertSendsValues(1_000, true, false)
             }
         }
     }
