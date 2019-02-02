@@ -45,6 +45,24 @@
       "firstname": "Draco",
       "lastname": "Malfoy",
       "houseId": 2
+    },
+    {
+      "id": 5,
+      "firstname": "Luna",
+      "lastname": "Lovegood",
+      "houseId": 4
+    },
+    {
+      "id": 6,
+      "firstname": "Neville",
+      "lastname": "Longbottom",
+      "houseId": 1
+    },
+    {
+      "id": 7,
+      "firstname": "Ginny",
+      "lastname": "Weasley",
+      "houseId": 1
     }
   ]
 }
