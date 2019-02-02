@@ -19,12 +19,10 @@ class HomeViewModelTest {
     private var subject: HomeViewModel = HomeViewModel(mockk())
 
     @Test
-    fun whenSuccessfulLoadData_ShowAndHideSpinner() {
-        runBlocking {
-            subject.spinner.captureValues {
-                subject.loadHouses()
-                assertSendsValues(1_000, true, false)
-            }
+    fun whenSuccessfulLoadData_ShowAndHideSpinner() = runBlocking {
+        subject.spinner.captureValues {
+            subject.loadHouses()
+            assertSendsValues(1_000, true, false)
         }
     }
 }

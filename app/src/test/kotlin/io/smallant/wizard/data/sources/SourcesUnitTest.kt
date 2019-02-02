@@ -54,21 +54,17 @@ class SourcesUnitTest {
     }
 
     @Test
-    fun `fetch wizards should work`() {
-        runBlocking {
-            repository.fetchWizards().first().let { firstWizard ->
-                assertEquals("John", firstWizard.firstname)
-                assertEquals("Doe", firstWizard.lastname)
-            }
+    fun `fetch wizards should work`() = runBlocking {
+        repository.fetchWizards().first().let { firstWizard ->
+            assertEquals("John", firstWizard.firstname)
+            assertEquals("Doe", firstWizard.lastname)
         }
     }
 
     @Test
-    fun `fetch specific wizard should work`() {
-        runBlocking {
-            with(repository.fetchWizard(1)) {
-                assertEquals("Jeanne Doe", fullname)
-            }
+    fun `fetch specific wizard should work`() = runBlocking {
+        with(repository.fetchWizard(1)) {
+            assertEquals("Jeanne Doe", fullname)
         }
     }
 
