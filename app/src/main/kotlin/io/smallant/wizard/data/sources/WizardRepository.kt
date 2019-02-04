@@ -9,6 +9,8 @@ import kotlinx.coroutines.withContext
 
 class WizardRepository(private val remoteDataSource: RemoteDataSource) {
 
+    // TODO refacto all coroutines calls
+
     /* Houses */
     suspend fun fetchHouses(): List<HogwartsHouse> {
         return withContext(Dispatchers.IO) {
@@ -26,7 +28,7 @@ class WizardRepository(private val remoteDataSource: RemoteDataSource) {
         }
     }
 
-    suspend fun fetchWizardsFromHouse(houseId: Int) : List<Wizard> {
+    suspend fun fetchWizardsFromHouse(houseId: Int): List<Wizard> {
         return withContext(Dispatchers.IO) {
             remoteDataSource.fetchWizardsFromHouse(houseId).await()
         }
@@ -42,6 +44,12 @@ class WizardRepository(private val remoteDataSource: RemoteDataSource) {
     suspend fun fetchWizard(id: Int): Wizard {
         return withContext(Dispatchers.IO) {
             remoteDataSource.fetchWizard(id).await()
+        }
+    }
+
+    suspend fun fetchWizardFriends(id: Int): List<Wizard> {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.fetchWizardFriends(id).await()
         }
     }
 

@@ -24,4 +24,7 @@ interface WizardService {
 
     @GET("/wizards/{id}")
     fun getWizard(@Path("id") id: Int): Deferred<Response<Wizard>>
+
+    @GET("/wizards/{id}/friends")
+    fun getWizardFriends(@Path("id") id: Int): Deferred<Response<List<Wizard>>>
 }

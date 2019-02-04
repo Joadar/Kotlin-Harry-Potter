@@ -29,6 +29,8 @@ class StudentActivity : BaseActivity<ActivityStudentBinding, StudentViewModel>()
             this.setDisplayHomeAsUpEnabled(true)
             this.setDisplayShowHomeEnabled(true)
         }
+
+        getViewModel().fetchData(studentId)
     }
 
     override fun onSupportNavigateUp(): Boolean {

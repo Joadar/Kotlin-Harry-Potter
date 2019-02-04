@@ -13,4 +13,5 @@ interface DataSource {
     /* Wizards */
     suspend fun fetchWizards(): Result<List<Wizard>>
     suspend fun fetchWizard(id: Int): Result<Wizard>
+    suspend fun fetchWizardFriends(id: Int): Result<List<Wizard>>
 }

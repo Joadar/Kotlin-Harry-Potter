@@ -29,6 +29,10 @@ class RemoteDataSource(private val apiService: WizardService) : DataSource {
         return manageResponse { apiService.getWizard(id).await() }
     }
 
+    override suspend fun fetchWizardFriends(id: Int): Result<List<Wizard>> {
+        return manageResponse { apiService.getWizardFriends(id).await() }
+    }
+
     private suspend fun <T : Any> manageResponse(result: suspend () -> Response<T>): Result<T> {
         val response = result()
         try {
