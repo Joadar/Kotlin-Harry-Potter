@@ -14,10 +14,7 @@ import io.smallant.wizard.extensions.getHogwartsHouseTheme
 import io.smallant.wizard.ui.base.BaseActivity
 import io.smallant.wizard.ui.base.BaseRecyclerAdapter
 import io.smallant.wizard.ui.features.student.StudentActivity
-import io.smallant.wizard.utils.HOUSE_ID
-import io.smallant.wizard.utils.HOUSE_NAME
-import io.smallant.wizard.utils.STUDENT_FULLNAME
-import io.smallant.wizard.utils.STUDENT_ID
+import io.smallant.wizard.utils.*
 
 class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>(),
     BaseRecyclerAdapter.OnItemClickListener<Wizard> {
@@ -38,8 +35,8 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>(),
             houseName = bundle.getString(HOUSE_NAME)
         }
 
-        val theme: Int = houseName.getHogwartsHouseTheme()
-        setTheme(theme)
+        Theme.setCurrentHouseTheme(houseName)
+        setTheme(Theme.houseTheme)
 
         super.onCreate(savedInstanceState)
         viewDataBinding?.apply {
