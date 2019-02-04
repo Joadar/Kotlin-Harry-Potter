@@ -21,6 +21,8 @@
         <activity
                 android:launchMode="singleTop"
                 android:name=".ui.features.house.HouseActivity"/>
+        <activity
+            android:name=".ui.features.student.StudentActivity" />
     </application>
 
 </manifest>

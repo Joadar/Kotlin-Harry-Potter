@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable name="obj" type="io.smallant.wizard.data.models.characters.Wizard"/>
     </data>
-    <TextView
-            android:id="@+id/fullname"
-            android:text="@{obj.fullname}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?selectableItemBackground">
+
+        <TextView
+                android:id="@+id/fullname"
+                android:text="@{obj.fullname}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
+                tools:text="John Doe"/>
+
+    </FrameLayout>
+
 </layout>

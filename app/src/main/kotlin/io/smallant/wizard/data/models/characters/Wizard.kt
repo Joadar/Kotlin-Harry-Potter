@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-open class Wizard(val firstname: String, var lastname: String, var sexe: Sexe) {
+open class Wizard(val firstname: String, var lastname: String, var sexe: Sexe, val id: Int? = 0) {
     private var dob: Date = Date()
     val age: Int
         get() = age(dob)

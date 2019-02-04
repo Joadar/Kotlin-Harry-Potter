@@ -15,7 +15,8 @@ import io.smallant.wizard.ui.features.house.HouseActivity
 import io.smallant.wizard.utils.HOUSE_ID
 import io.smallant.wizard.utils.HOUSE_NAME
 
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), BaseRecyclerAdapter.OnItemClickListener<HogwartsHouse> {
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(),
+    BaseRecyclerAdapter.OnItemClickListener<HogwartsHouse> {
 
     private val housesAdapter: HousesRecyclerAdapter = HousesRecyclerAdapter(this)
 
@@ -48,9 +49,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), BaseRec
     }
 
     override fun onItemClick(item: HogwartsHouse) {
-        val intent = Intent(this@HomeActivity, HouseActivity::class.java)
-        intent.putExtra(HOUSE_ID, item.id)
-        intent.putExtra(HOUSE_NAME, item.name)
+        val intent = Intent(this@HomeActivity, HouseActivity::class.java).apply {
+            putExtra(HOUSE_ID, item.id)
+            putExtra(HOUSE_NAME, item.name)
+        }
         startActivity(intent)
     }
 }

@@ -1,21 +1,28 @@
 package io.smallant.wizard.ui.features.house
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.smallant.wizard.R
+import io.smallant.wizard.data.models.characters.Wizard
 import io.smallant.wizard.databinding.ActivityHouseBinding
 import io.smallant.wizard.extensions.getHogwartsHouseActionBarIcon
 import io.smallant.wizard.extensions.getHogwartsHouseTheme
 import io.smallant.wizard.ui.base.BaseActivity
+import io.smallant.wizard.ui.base.BaseRecyclerAdapter
+import io.smallant.wizard.ui.features.student.StudentActivity
 import io.smallant.wizard.utils.HOUSE_ID
 import io.smallant.wizard.utils.HOUSE_NAME
+import io.smallant.wizard.utils.STUDENT_FULLNAME
+import io.smallant.wizard.utils.STUDENT_ID
 
-class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
+class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>(),
+    BaseRecyclerAdapter.OnItemClickListener<Wizard> {
 
-    private val wizardsAdapter: WizardsRecyclerAdapter = WizardsRecyclerAdapter()
+    private val wizardsAdapter: WizardsRecyclerAdapter = WizardsRecyclerAdapter(this)
 
     override fun getLayoutId(): Int = R.layout.activity_house
     override fun getViewModel(): HouseViewModel = ViewModelProviders.of(this).get(HouseViewModel::class.java)
@@ -40,12 +47,12 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
             setLifecycleOwner(this@HouseActivity)
         }
 
-        with(supportActionBar) {
-            this?.title = houseName
-            this?.setDisplayHomeAsUpEnabled(true)
-            this?.setDisplayShowHomeEnabled(true)
-            this?.setDisplayUseLogoEnabled(true)
-            this?.setLogo(houseName.getHogwartsHouseActionBarIcon())
+        supportActionBar?.run {
+            this.title = houseName
+            this.setDisplayHomeAsUpEnabled(true)
+            this.setDisplayShowHomeEnabled(true)
+            this.setDisplayUseLogoEnabled(true)
+            this.setLogo(houseName.getHogwartsHouseActionBarIcon())
         }
 
         if (savedInstanceState == null) {
@@ -63,6 +70,14 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>() {
         getViewModel().wizards.observe(this, Observer { wizards ->
             wizardsAdapter.setItems(wizards)
         })
+    }
+
+    override fun onItemClick(item: Wizard) {
+        val intent = Intent(this, StudentActivity::class.java).apply {
+            putExtra(STUDENT_ID, item.id)
+            putExtra(STUDENT_FULLNAME, item.fullname)
+        }
+        startActivity(intent)
     }
 
     override fun onSupportNavigateUp(): Boolean {
