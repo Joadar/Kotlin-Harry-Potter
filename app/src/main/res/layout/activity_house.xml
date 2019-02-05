@@ -37,15 +37,8 @@
                  android:visibility="@{viewModel.empty != null ? View.VISIBLE : View.GONE}"
                  bind:message="@{viewModel.empty}"/>
 
-        <ProgressBar
-                android:id="@+id/spinner"
-                android:visibility="@{viewModel.spinner ? View.VISIBLE : View.GONE}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+        <include layout="@layout/inc_spinner"
+                 bind:spinner="@{viewModel.spinner}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

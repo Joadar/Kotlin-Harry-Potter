@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="spinner" type="java.lang.Boolean"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <ProgressBar
+            android:id="@+id/spinner"
+            android:visibility="@{spinner ? View.VISIBLE : View.GONE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+</layout>
