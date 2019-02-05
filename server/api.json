@@ -63,6 +63,24 @@
       "firstname": "Ginny",
       "lastname": "Weasley",
       "houseId": 1
+    },
+    {
+      "id": 8,
+      "firstname": "Cho",
+      "lastname": "Chang",
+      "houseId": 4
+    },
+    {
+      "id": 9,
+      "firstname": "Vincent",
+      "lastname": "Crabbe",
+      "houseId": 2
+    },
+    {
+      "id": 10,
+      "firstname": "Gregory",
+      "lastname": "Goyle",
+      "houseId": 2
     }
   ],
   "relationship": [
@@ -79,15 +97,22 @@
       "status": "Friend"
     },
     {
-      "id": 2,
+      "id": 3,
       "originalWizard": 1,
       "wizardId": 7,
       "status": "Girlfriend"
     },
     {
-      "id": 2,
+      "id": 4,
       "originalWizard": 5,
-      "wizardId": 7
+      "wizardId": 7,
+      "status": "Friend"
+    },
+    {
+      "id": 5,
+      "originalWizard": 1,
+      "wizardId": 8,
+      "status": "Ex girlfriend"
     }
   ]
 }
