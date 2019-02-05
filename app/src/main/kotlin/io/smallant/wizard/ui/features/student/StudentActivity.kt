@@ -16,6 +16,11 @@ class StudentActivity : BaseActivity<ActivityStudentBinding, StudentViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(Theme.houseTheme)
         super.onCreate(savedInstanceState)
+        viewDataBinding?.apply {
+            viewModel = this@StudentActivity.getViewModel()
+            setLifecycleOwner(this@StudentActivity)
+        }
+
         var studentFullname: String? = "John Doe"
         var studentId = 0
 
