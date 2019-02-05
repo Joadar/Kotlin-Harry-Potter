@@ -9,9 +9,8 @@ open class HogwartsHouseInfo {
     var image: String? = null
 }
 
-sealed class HogwartsHouse(private val house: House, val founder: Wizard) : HogwartsHouseInfo() {
-    override val name: String
-        get() = house.asString()
+sealed class HogwartsHouse(house: House, private val founder: Wizard) : HogwartsHouseInfo() {
+    override val name: String = house.asString()
 
     val founderName: String
         get() = "${founder.firstname} ${founder.lastname}"

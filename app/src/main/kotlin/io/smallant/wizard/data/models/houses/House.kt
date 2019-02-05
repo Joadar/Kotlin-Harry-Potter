@@ -4,4 +4,4 @@ enum class House {
     GRYFFINDOR, HUFFLEPUFF, RAVENCLAW, SLYTHERIN;
 }
 
-fun House.asString(): String = this.toString().toLowerCase().capitalize()
+fun House.asString(): String = this.name.toLowerCase().capitalize()

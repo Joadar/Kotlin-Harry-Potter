@@ -15,7 +15,7 @@ fun String?.getHogwartsHouseTheme(): Int {
 }
 
 fun String?.getHogwartsHouseActionBarIcon(): Int {
-    return when(this) {
+    return when (this) {
         House.SLYTHERIN.asString() -> R.drawable.actionbar_slytherin
         House.RAVENCLAW.asString() -> R.drawable.actionbar_ravenclaw
         House.HUFFLEPUFF.asString() -> R.drawable.actionbar_hufflepuff
