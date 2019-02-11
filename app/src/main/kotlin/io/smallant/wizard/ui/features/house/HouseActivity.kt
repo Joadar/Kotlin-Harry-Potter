@@ -41,7 +41,7 @@ class HouseActivity : BaseActivity<ActivityHouseBinding, HouseViewModel>(),
         super.onCreate(savedInstanceState)
         viewDataBinding?.apply {
             viewModel = this@HouseActivity.getViewModel()
-            setLifecycleOwner(this@HouseActivity)
+            lifecycleOwner = this@HouseActivity
         }
 
         supportActionBar?.run {

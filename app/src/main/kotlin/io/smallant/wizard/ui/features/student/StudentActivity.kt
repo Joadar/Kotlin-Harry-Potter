@@ -18,7 +18,7 @@ class StudentActivity : BaseActivity<ActivityStudentBinding, StudentViewModel>()
         super.onCreate(savedInstanceState)
         viewDataBinding?.apply {
             viewModel = this@StudentActivity.getViewModel()
-            setLifecycleOwner(this@StudentActivity)
+            lifecycleOwner = this@StudentActivity
         }
 
         var studentFullname: String? = "John Doe"

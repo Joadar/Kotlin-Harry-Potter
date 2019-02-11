@@ -28,7 +28,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(),
         super.onCreate(savedInstanceState)
         viewDataBinding?.apply {
             viewModel = this@HomeActivity.getViewModel()
-            setLifecycleOwner(this@HomeActivity)
+            lifecycleOwner = this@HomeActivity
         }
 
         if (savedInstanceState == null) {
